@@ -33,6 +33,9 @@ plugins:
     subtitle: "Just another Perl hacker"
     articles_directory: "articles"
     comments_directory: "comments"
+    theme_highlight_code: "default"
     #Feed format can be atom or rss, default is rss
     format_feed: "rss"
     articles_per_feed: 10
+    articles_per_page: 5
+    footer: 'Powered by <a href="http://perldancer.org">Dancer</a> and MahewinSimpleBlog'

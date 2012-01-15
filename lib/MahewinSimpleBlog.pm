@@ -32,7 +32,7 @@ get '/' => sub {
     template 'index' => {
         articles         => $get_articles,
         current_page     => params->{page},
-        entries_per_page => 5
+        entries_per_page => detail_configuration('articles_per_page') // 5
     };
 
 };
