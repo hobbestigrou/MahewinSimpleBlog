@@ -8,8 +8,6 @@ appname: "MahewinSimpleBlog"
 # The default layout to use for your application (located in
 # views/layouts/main.tt)
 layout: "main"
-articles_directory: "articles"
-comments_directory: 'comments'
 
 # when the charset is set to UTF-8 Dancer will handle for you
 # all the magic of encoding and decoding. You should not care
@@ -29,3 +27,8 @@ engines:
 #     start_tag: '[%'
 #     end_tag:   '%]'
 
+plugins:
+  MahewinSimpleBlog::Configuration:
+    blog_name: "Hobbestigrou"
+    articles_directory: "articles"
+    comments_directory: "comments"

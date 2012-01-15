@@ -5,14 +5,15 @@ use Text::Simple::Blog;
 use Dancer::Plugin::Feed;
 
 use Try::Tiny;
+use MahewinSimpleBlog::Configuration;
 
 our $VERSION = '0.1';
 
 my $articles_directory = Dancer::FileUtils::path(
-    setting('appdir'), setting('articles_directory')
+    setting('appdir'), detail_configuration('articles_directory')
 );
 my $comments_directory = Dancer::FileUtils::path(
-    setting('appdir'), setting('comments_directory')
+    setting('appdir'), detail_configuration('articles_directory')
 );
 
 my $blog     = Text::Simple::Blog->new();
