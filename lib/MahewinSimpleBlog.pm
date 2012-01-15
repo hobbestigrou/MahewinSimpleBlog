@@ -49,6 +49,8 @@ get '/articles/:title' => sub {
 };
 
 post '/comments' => sub {
+    return halt('Error: mail is required') if ! params->{email};
+
     my $params = {
        name   => params->{name},
        mail   => params->{email},
