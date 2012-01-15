@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-type" content="text/html; charset=<% settings.charset %>" />
-<title>essai</title>
+<title><% config.blog_name %></title>
 <link rel="stylesheet" href="<% request.uri_base %>/css/style.css" />
 <link href="http://fonts.googleapis.com/css?family=Nosifer|Ruge+Boogie|Metamorphous|Flamenco|Squada+One" rel="stylesheet" type="text/css" />
 <link href="<% request.uri_base %>/css/styles/github.css" rel="stylesheet" type="text/css" />
@@ -20,8 +20,8 @@
 </head>
 <body>
 <div id=header>
-<h1>Hobbestigrou</h1>
-<span class="subtitle">Just another Perl hacker</span>
+<h1><% config.blog_name %></h1>
+<span class="subtitle"><% config.subtitle %></span>
 </div>
 <div id="menu">
     <a href="/feed" title="Rss"><img src="/images/feed.png" alt="" /></a>

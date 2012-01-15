@@ -20,6 +20,12 @@ my $blog     = Text::Simple::Blog->new();
 my $articles = $blog->articles({ directory => $articles_directory });
 my $comments = $blog->comments({ directory => $comments_directory });
 
+hook before_template => sub {
+    my ( $token ) = @_;
+
+    $token->{config} = list_configuration();
+};
+
 get '/' => sub {
     my $get_articles = $articles->articles;
 
