@@ -32,3 +32,6 @@ plugins:
     blog_name: "Hobbestigrou"
     articles_directory: "articles"
     comments_directory: "comments"
+    #Feed format can be atom or rss, default is rss
+    format_feed: "rss"
+    articles_per_feed: 10

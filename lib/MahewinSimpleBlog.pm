@@ -77,7 +77,7 @@ sub _create_feed {
     my ( $articles_list ) = @_;
 
     my @articles_for_feed;
-    my $articles_per_feed = 10;
+    my $articles_per_feed = detail_configuration('articles_per_feed') // 10;
     my $count             = 0;
     my $url               = request->base;
     $url                  =~ s/:\d+//g;
@@ -96,8 +96,8 @@ sub _create_feed {
     }
 
     create_feed(
-        format  => 'rss',
-        title   => 'Hobbestigrou ',
+        format  => detail_configuration('format_feed') // 'rss',
+        title   => detail_configuration('blog_name') // 'MahewinSimpleBlog',
         link    => $url,
         entries => \@articles_for_feed,
     );
