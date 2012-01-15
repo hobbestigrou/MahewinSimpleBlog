@@ -62,39 +62,43 @@ post '/comments' => sub {
 get '/feed' => sub {
     my $get_articles = $articles->articles;
 
-    my @articles_for_feed;
-    my $count = 0;
-    foreach my $article (@{$get_articles}) {
-        push(@articles_for_feed, $article);
-        $count++;
-        last if $count == 10;
-    }
-
-    create_feed(
-            format  => 'rss',
-            title   => 'Hobbestigrou ',
-            link    => request->base,
-            entries => \@articles_for_feed,
-        );
+    _create_feed($get_articles);
 };
 
 get '/feed/:tag' => sub {
     my $get_articles = $articles->get_articles_by_tag(params->{tag});
 
+    _create_feed($get_articles);
+};
+
+sub _create_feed {
+    my ( $articles_list ) = @_;
+
     my @articles_for_feed;
-    my $count = 0;
-    foreach my $article (@{$get_articles}) {
-        push(@articles_for_feed, $article);
+    my $articles_per_feed = 10;
+    my $count             = 0;
+    my $url               = request->base;
+    $url                  =~ s/:\d+//g;
+
+    foreach my $article ( @{$articles_list} ) {
+        my $article_feed = {
+            link    => $url . 'articles' . '/' . $article->{link},
+            content => $article->{content},
+            title   => $article->{title},
+            tags    => join(',', @{$article->{tags}})
+        };
+
+        push(@articles_for_feed, $article_feed);
         $count++;
-        last if $count == 10;
+        last if $count == $articles_per_feed;
     }
 
     create_feed(
-            format  => 'rss',
-            title   => 'Hobbestigrou ',
-            link    => request->base,
-            entries => \@articles_for_feed,
-        );
+        format  => 'rss',
+        title   => 'Hobbestigrou ',
+        link    => $url,
+        entries => \@articles_for_feed,
+    );
 };
 
 true;
