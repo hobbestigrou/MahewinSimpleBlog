@@ -13,7 +13,7 @@ my $articles_directory = Dancer::FileUtils::path(
     setting('appdir'), detail_configuration('articles_directory')
 );
 my $comments_directory = Dancer::FileUtils::path(
-    setting('appdir'), detail_configuration('articles_directory')
+    setting('appdir'), detail_configuration('comments_directory')
 );
 
 my $blog     = Text::Simple::Blog->new();
