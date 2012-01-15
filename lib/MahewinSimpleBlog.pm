@@ -1,7 +1,7 @@
 package MahewinSimpleBlog;
 use Dancer ':syntax';
 
-use Text::Simple::Blog;
+use MahewinBlogEngine;
 use Dancer::Plugin::Feed;
 
 use Try::Tiny;
@@ -16,7 +16,7 @@ my $comments_directory = Dancer::FileUtils::path(
     setting('appdir'), detail_configuration('comments_directory')
 );
 
-my $blog     = Text::Simple::Blog->new();
+my $blog     = MahewinBlogEngine->new();
 my $articles = $blog->articles({ directory => $articles_directory });
 my $comments = $blog->comments({ directory => $comments_directory });
 
