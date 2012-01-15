@@ -30,6 +30,7 @@ engines:
 plugins:
   MahewinSimpleBlog::Configuration:
     blog_name: "Hobbestigrou"
+    subtitle: "Just another Perl hacker"
     articles_directory: "articles"
     comments_directory: "comments"
     #Feed format can be atom or rss, default is rss
