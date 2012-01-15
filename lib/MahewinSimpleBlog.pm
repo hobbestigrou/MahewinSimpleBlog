@@ -3,8 +3,6 @@ use Dancer ':syntax';
 
 use MahewinBlogEngine;
 use Dancer::Plugin::Feed;
-
-use Try::Tiny;
 use MahewinSimpleBlog::Configuration;
 
 our $VERSION = '0.1';
@@ -34,7 +32,6 @@ get '/' => sub {
         current_page     => params->{page},
         entries_per_page => detail_configuration('articles_per_page') // 5
     };
-
 };
 
 get '/articles/:title' => sub {
