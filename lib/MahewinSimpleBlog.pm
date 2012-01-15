@@ -32,6 +32,7 @@ get '/' => sub {
 
 get '/articles/:title' => sub {
     my $get_article = $articles->get_article(params->{title});
+    send_error("This articles was deleted or does exist", 404) if ! $get_article;
     my $get_comments_by_article = $comments->get_comments_by_article(params->{title});
 
     my @comments;
