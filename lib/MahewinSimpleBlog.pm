@@ -27,7 +27,7 @@ hook before_template => sub {
 };
 
 get '/' => sub {
-    my $get_articles = $articles->articles;
+    my $get_articles = $articles->article_list;
 
     template 'index' => {
         articles         => $get_articles,
@@ -38,7 +38,7 @@ get '/' => sub {
 };
 
 get '/articles/:title' => sub {
-    my $get_article = $articles->get_article(params->{title});
+    my $get_article = $articles->article_details(params->{title});
     send_error("This articles was deleted or does exist", 404) if ! $get_article;
     my $get_comments_by_article = $comments->get_comments_by_article(params->{title});
 
@@ -70,7 +70,7 @@ post '/comments' => sub {
 };
 
 get '/feed' => sub {
-    my $get_articles = $articles->articles;
+    my $get_articles = $articles->article_list;
 
     _create_feed($get_articles);
 };
