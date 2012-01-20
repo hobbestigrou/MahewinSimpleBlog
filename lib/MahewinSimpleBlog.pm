@@ -78,6 +78,13 @@ get '/feed/:tag' => sub {
     _create_feed($get_articles);
 };
 
+get '/refresh' => sub {
+    $articles->clear_articles;
+    $comments->clear_comments;
+
+    redirect '/';
+};
+
 sub _create_feed {
     my ( $articles_list ) = @_;
 
