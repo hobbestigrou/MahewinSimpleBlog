@@ -33,6 +33,7 @@ plugins:
     subtitle: "Just another Perl hacker"
     articles_directory: "articles"
     comments_directory: "comments"
+    themes: "default"
     theme_highlight_code: "default"
     #Feed format can be atom or rss, default is rss
     format_feed: "rss"
