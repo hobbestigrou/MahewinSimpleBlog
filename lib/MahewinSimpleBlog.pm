@@ -7,6 +7,13 @@ use MahewinSimpleBlog::Configuration;
 
 our $VERSION = '0.1';
 
+set public =>  Dancer::FileUtils::path(
+    setting('appdir'), 'themes', detail_configuration('themes'), 'public'
+);
+set views  => Dancer::FileUtils::path(
+    setting('appdir'), 'themes', detail_configuration('themes')
+);
+
 my $articles_directory = Dancer::FileUtils::path(
     setting('appdir'), detail_configuration('articles_directory')
 );
