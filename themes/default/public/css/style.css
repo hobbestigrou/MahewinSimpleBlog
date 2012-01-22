@@ -1,0 +1,97 @@
+body {
+    margin: 0;
+    margin-bottom: 25px;
+    padding: 0;
+    background-color: black;
+    background-image: url("/images/broken_noise.png");
+    font-family: 'Metamorphous', Arial, serif;
+    font-size: 1em;
+    color: green;
+}
+
+h1 {
+    color: yellow;
+    font-family: 'Nosifer', Arial, serif;
+}
+
+a  {color: #03c}
+a:hover {
+    background-color: #03c;
+    color: white;
+    text-decoration: none;
+}
+
+#menu {
+    margin-left: 79%;
+    margin-top: 8px;
+}
+
+#content {
+    text-align: left;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%;
+}
+
+#header, #about, #getting-started {
+padding-left: 75px;
+padding-right: 30px;
+}
+
+
+#header h1 {
+    margin: 0;
+    font-family: 'Flamenco';
+}
+
+#search {
+    margin: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 11px;
+}
+#search input {
+font-size: 11px;
+margin: 2px;
+}
+#search-text {width: 170px}
+
+h1, h2, h3, h4, h5 {
+    margin: 1.2em 0 0.6em 0;
+}
+
+p {
+    line-height: 1.5em;
+    margin: 1.6em 0;
+}
+
+code, tt {
+    font-family: 'Andale Mono', Monaco, 'Liberation Mono', 'Bitstream Vera Sans Mono', 'DejaVu Sans Mono', monospace;
+}
+
+.subtitle {
+    color: #C3C3C3;
+    margin-left: 80%;
+    padding: 0;
+    font-style: italic;
+}
+
+.date {
+    color: #C3C3C3;
+    font-style: italic;
+}
+
+.comment_header {
+    background-color: gray;
+    height: 25px;
+}
+
+#footer {
+    clear: both;
+    padding-top: 2em;
+    text-align: center;
+    padding-right: 160px;
+    font-family: sans-serif;
+    font-size: 10px;
+}

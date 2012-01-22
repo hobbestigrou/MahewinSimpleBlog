@@ -1,0 +1,32 @@
+<h1><% article.title %></h1>
+<p class="date"><% article.date %> - <% nb_comments %> Comments </p>
+<% article.content %>
+
+<h2>Comments: </h2>
+<% FOREACH comment IN comments %>
+        <div class="comment">
+            <div class="comment_header">
+                <% comment.author %>
+            </div>
+            <% comment.body %>
+        </div>
+<% END %>
+
+<h2>Post a new comment: </h2>
+<form action="/comments" method="POST">
+    <input type="hidden" name="id_article" value="<% article.link %>" />
+
+    <label for="name">Name:</label><br />
+    <input type="text" name="name" id="name" /><br />
+
+    <label for="email">Email:</label><br />
+    <input type="text" name="email" id="email" /><br />
+
+    <label for="url">Website:</label><br />
+    <input type="text" name="url" id="url" /><br />
+
+    <label for="body">Content:</label><br />
+    <textarea name="body" id="body" rows="10" cols="50"></textarea><br />
+
+    <input type="submit" value="Post a comment" />
+</form>
