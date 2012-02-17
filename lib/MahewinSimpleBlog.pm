@@ -34,6 +34,17 @@ hook before_template => sub {
 get '/' => sub {
     my $get_articles = $articles->article_list;
 
+
+    foreach my $article (@{$get_articles}) {
+        my $get_comments_by_article = $comments->get_comments_by_article($article->{link});
+        my @comments;
+        foreach my $comment (@{$get_comments_by_article}) {
+            push(@comments, $comment) if $comment->{hidden} == 0;
+        }
+
+        $article->{nb_comments} = scalar(@comments);
+    }
+
     template 'index' => {
         articles         => $get_articles,
         current_page     => params->{page},
