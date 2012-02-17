@@ -1,6 +1,9 @@
-<h1><% article.title %></h1>
-<p class="date"><% article.date %> - <% nb_comments %> Comments </p>
-<% article.content %>
+<h2 class="title"><% article.title %></h2>
+<p class="meta"><% article.date %> - Comments(<% nb_comments %>)</p>
+
+<div class="entry">
+    <% article.content %>
+</div>
 
 <h2>Comments: </h2>
 <% FOREACH comment IN comments %>
