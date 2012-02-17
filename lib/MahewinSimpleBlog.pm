@@ -36,13 +36,7 @@ get '/' => sub {
 
 
     foreach my $article (@{$get_articles}) {
-        my $get_comments_by_article = $comments->get_comments_by_article($article->{link});
-        my @comments;
-        foreach my $comment (@{$get_comments_by_article}) {
-            push(@comments, $comment) if $comment->{hidden} == 0;
-        }
-
-        $article->{nb_comments} = scalar(@comments);
+        $article->{nb_comments} = scalar(_get_comments_for_article($article->{link}));
     }
 
     template 'index' => {
@@ -57,11 +51,7 @@ get '/articles/:title' => sub {
     send_error("This articles was deleted or does exist", 404) if ! $get_article;
     my $get_comments_by_article = $comments->get_comments_by_article(params->{title});
 
-    my @comments;
-    foreach my $comment (@{$get_comments_by_article}) {
-        push(@comments, $comment) if $comment->{hidden} == 0;
-    }
-
+    my @comments = _get_comments_for_article(params->{title});
     template 'article_details' => {
         article     => $get_article,
         comments    => \@comments,
@@ -132,5 +122,18 @@ sub _create_feed {
         entries => \@articles_for_feed,
     );
 };
+
+sub _get_comments_for_article {
+    my ( $article ) = @_;
+
+    my $get_comments_by_article = $comments->get_comments_by_article($article);
+    my @comments;
+
+    foreach my $comment (@{$get_comments_by_article}) {
+        push(@comments, $comment) if $comment->{hidden} == 0;
+    }
+
+    return @comments;
+}
 
 true;
