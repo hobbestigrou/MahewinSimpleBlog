@@ -34,7 +34,6 @@ hook before_template => sub {
 get '/' => sub {
     my $get_articles = $articles->article_list;
 
-
     foreach my $article (@{$get_articles}) {
         $article->{nb_comments} = scalar(_get_comments_for_article($article->{link}));
     }
@@ -60,6 +59,9 @@ get '/articles/:title' => sub {
 };
 
 post '/comments' => sub {
+    my $article = $articles->article_details(params->{id_article});
+
+    send_error("This articles was deleted or does exist", 404) if ! $article;
     return halt('Error: mail is required') if ! params->{email};
 
     my $params = {
