@@ -100,6 +100,7 @@ img.aligncenter {
     letter-spacing: -1px;
     text-align: center;
     text-transform: uppercase;
+    text-shadow: 0 0 5px white;
     font-size: 54px;
     font-weight: bold;
     color: #2E9F13;
