@@ -211,6 +211,9 @@ img.aligncenter {
     width: 980px;
     margin: 0 auto;
     padding: 0;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
     background-color: #FFFFFF;
 }
 
