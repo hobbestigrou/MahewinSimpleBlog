@@ -38,6 +38,11 @@ get '/' => sub {
         $article->{nb_comments} = scalar(_get_comments_for_article($article->{link}));
     }
 
+    if ( params->{page} ) {
+        return halt('Attribut page must be an integer')
+            if params->{page} !~ /^\d/;
+    }
+
     template 'index' => {
         articles         => $get_articles,
         current_page     => params->{page},
