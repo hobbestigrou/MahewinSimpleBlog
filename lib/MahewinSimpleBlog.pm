@@ -40,7 +40,7 @@ get '/' => sub {
 
     if ( params->{page} ) {
         return halt('Attribut page must be an integer')
-            if params->{page} !~ /^\d/;
+            if params->{page} !~ /^\d+$/;
     }
 
     template 'index' => {
