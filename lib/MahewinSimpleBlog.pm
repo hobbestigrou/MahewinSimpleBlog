@@ -66,7 +66,7 @@ get '/articles/:title' => sub {
 post '/comments' => sub {
     my $get_article = $articles->article_details(params->{id_article});
 
-    send_error("This articles was deleted or does exist", 404) if ! $article;
+    send_error("This articles was deleted or does exist", 404) if ! $get_article;
     return halt('Error: mail is required') if ! params->{email};
 
     my $params = {
