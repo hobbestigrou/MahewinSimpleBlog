@@ -22,8 +22,8 @@ my $comments_directory = Dancer::FileUtils::path(
 );
 
 my $blog     = MahewinBlogEngine->new();
-my $articles = $blog->articles({ directory => $articles_directory });
-my $comments = $blog->comments({ directory => $comments_directory });
+my $articles = $blog->articles( directory => $articles_directory );
+my $comments = $blog->comments( directory => $comments_directory );
 
 hook before_template => sub {
     my ( $token ) = @_;
