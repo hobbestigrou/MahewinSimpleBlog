@@ -45,6 +45,13 @@
                                     <h2>Feed</h2>
                                     <a href="/feed" title="Rss"><img src="/images/feed.png" alt="" /></a>
                                 </li>
+                                <li>
+                                    <h2>Search</h2>
+                                    <form action="/search" method="POST">
+                                        <input type="text" name="search" id="search" /><br />
+                                        <input type="submit" value="Go" />
+                                    </form>
+                                </li>
                             </ul>
 
                         </div>
