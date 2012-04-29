@@ -100,6 +100,15 @@ get '/refresh' => sub {
     redirect '/';
 };
 
+post '/search' => sub {
+    my $search_articles = $articles->search(params->{search});
+
+    template 'search' => {
+        articles     => $search_articles,
+        nb_articles  => scalar(@{$search_articles})
+    };
+};
+
 sub _create_feed {
     my ( $articles_list ) = @_;
 
