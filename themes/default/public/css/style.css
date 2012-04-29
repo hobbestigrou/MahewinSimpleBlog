@@ -126,13 +126,6 @@ img.aligncenter {
 
 /* Search */
 
-#search {
-    float: right;
-    width: 280px;
-    height: 100px;
-    padding: 0;
-}
-
 #search form {
     height: 41px;
     margin: 0;
