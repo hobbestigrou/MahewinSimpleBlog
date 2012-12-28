@@ -1,35 +1,20 @@
 <h2 class="title"><% article.title %></h2>
-<p class="meta"><% article.date %> - Comments(<% nb_comments %>)</p>
+<p class="meta"><% article.date %></p>
 
 <div class="entry">
     <% article.content %>
 </div>
 
-<h2>Comments: </h2>
-<% FOREACH comment IN comments %>
-        <div class="comment">
-            <div class="comment_header">
-                <% comment.author %>
-            </div>
-            <% comment.body %>
-        </div>
-<% END %>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'hobbestigrou'; // required: replace example with your forum shortname
 
-<h2>Post a new comment: </h2>
-<form action="/comments" method="POST">
-    <input type="hidden" name="id_article" value="<% article.link %>" />
-
-    <label for="name">Name:</label><br />
-    <input type="text" name="name" id="name" /><br />
-
-    <label for="email">Email:</label><br />
-    <input type="text" name="email" id="email" /><br />
-
-    <label for="url">Website:</label><br />
-    <input type="text" name="url" id="url" /><br />
-
-    <label for="body">Content:</label><br />
-    <textarea name="body" id="body" rows="10" cols="50"></textarea><br />
-
-    <input type="submit" value="Post a comment" />
-</form>
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
