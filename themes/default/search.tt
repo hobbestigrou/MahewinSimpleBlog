@@ -4,7 +4,13 @@
 <% FOREACH article IN articles %>
     <h2><a href="articles/<% article.link %>"><% article.title %></a></h2>
     <div class="entry">
-        <% article.content %>
+        <% FOREACH word IN article.content.split(' ') %>
+            <% IF word.search(pattern) %>
+               <span style="background: yellow"><% word %></span>
+            <% ELSE %>
+               <% word %>
+            <% END %>
+        <% END %>
     </div>
 <% END %>
 
