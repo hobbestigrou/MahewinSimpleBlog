@@ -43,7 +43,7 @@ get '/' => sub {
 };
 
 get '/articles/:title' => sub {
-    my $get_article = $articles->article_details(params->{title});
+    my $get_article = $articles->article_details( link => params->{title} );
     send_error("This articles was deleted or does exist", 404) if ! $get_article;
 
     template 'article_details' => {
@@ -58,16 +58,17 @@ get '/feed' => sub {
 };
 
 get '/feed/:tag' => sub {
-    my $get_articles = $articles->get_articles_by_tag(params->{tag});
+    my $get_articles = $articles->get_articles_by_tag( tag => params->{tag} );
 
     _create_feed($get_articles);
 };
 
 post '/search' => sub {
-    my $search_articles = $articles->search(params->{search});
+    my $search_articles = $articles->search( pattern => params->{search} );
 
     template 'search' => {
         articles     => $search_articles,
+        pattern      => params->{search},
         nb_articles  => scalar(@{$search_articles})
     };
 };
