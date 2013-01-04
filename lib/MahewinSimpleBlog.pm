@@ -58,7 +58,7 @@ get '/feed' => sub {
 };
 
 get '/feed/:tag' => sub {
-    my $get_articles = $articles->get_articles_by_tag( tag => params->{tag} );
+    my $get_articles = $articles->article_by_tag( tag => params->{tag} );
 
     _create_feed($get_articles);
 };
