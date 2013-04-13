@@ -270,6 +270,10 @@ img.aligncenter {
     color: #FFFFFF;
 }
 
+.footnote {
+    vertical-align: super;
+}
+
 /* Sidebar */
 
 #sidebar {
