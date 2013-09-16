@@ -66,10 +66,27 @@ get '/feed/:tag' => sub {
 post '/search' => sub {
     my $search_articles = $articles->search( pattern => params->{search} );
 
+
+    foreach my $article (@{$search_articles}) {
+        my @result;
+
+        foreach my $word (split(' ', $article->{content})) {
+            if ( $word =~ params->{search} ) {
+                push(@result,
+                    '<span style="background: yellow">' . $word . '</span>');
+            }
+            else {
+                push(@result, $word);
+            }
+        }
+
+        $article->{content} = join(' ', @result);
+    }
+
+
     template 'search' => {
         articles     => $search_articles,
-        pattern      => params->{search},
-        nb_articles  => scalar(@{$search_articles})
+        nb_articles  => scalar(@{$search_articles}),
     };
 };
 
