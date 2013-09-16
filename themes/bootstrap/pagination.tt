@@ -1,0 +1,12 @@
+<div class="row">
+    <ul class="pager">
+        <li><a href="?page=<% page.first_page %>">First page</a></li>
+        <% IF page.previous_page %>
+            <li><a href="?page=<% page.previous_page %>">Previous</a></li>
+        <% END %>
+        <% IF page.next_page %>
+            <li><a href="?page=<% page.next_page %>">Next</a></li>
+        <% END %>
+        <li><a href="?page=<% page.last_page %>">Last page</a></li>
+    </ul>
+</div>

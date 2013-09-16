@@ -1,0 +1,11 @@
+<h1>Search results</h1>
+<p><% nb_articles %> articles found</p>
+
+<% FOREACH article IN articles %>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <h2><a href="articles/<% article.link %>"><% article.title %></a></h2>
+            <% article.content %>
+        </div>
+    </div>
+<% END %>

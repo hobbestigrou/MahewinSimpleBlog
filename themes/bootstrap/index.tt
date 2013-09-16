@@ -1,0 +1,28 @@
+<% USE page = Pagination(articles, current_page, entries_per_page) %>
+
+<% FOREACH article IN page.page_data %>
+    <div class="panel panel-default">
+    <div class="panel-body">
+    <h2><a href="articles/<% article.link %>"><% article.title %></a></h2><a href="articles/<% article.link %>#disqus_thread">comments</a>
+    <p class="meta"><% article.date %></p>
+    <% article.content %>
+    </div>
+    </div>
+    <% END %>
+
+<br />
+
+<% INCLUDE 'pagination.tt' %>
+
+<script type="text/javascript">
+     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+     var disqus_shortname = '<% config.disqus_login %>'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+	var s = document.createElement('script'); s.async = true;
+	s.type = 'text/javascript';
+	s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+	(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);}());
+</script>
+
